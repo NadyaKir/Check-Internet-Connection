@@ -8,13 +8,18 @@
 }
 
 body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
   background: #e3f2fd;
 }
 
 .popup {
   position: absolute;
   left: 50%;
-  top: 0;
+  top: -25%;
+  visibility: hidden;
   width: 490px;
   border-radius: 5px;
   padding: 13px 17px 20px;
@@ -23,8 +28,16 @@ body {
   border-top: 3px solid #ea4d67;
   transform: translate(-50%);
   box-shadow: 0 10px 25px rgba(52, 87, 220, 0.1);
+  transition: all 0.25s ease;
 }
 
+.popup.show {
+  top: 0;
+  visibility: visible;
+}
+.popup.online {
+  border-color: #2ecc71;
+}
 i {
   width: 40px;
   height: 40px;
@@ -38,6 +51,9 @@ i {
   font-size: 1.2rem;
 }
 
+.popup.online .icon i {
+  background: #2ecc71;
+}
 .title {
   font-size: 1.2rem;
 }
@@ -58,4 +74,28 @@ i {
   padding: 9px 15px;
   border-radius: 4px;
   background: #5372f0;
+}
+
+.popup.online .reconnect {
+  background: #bfbfbf;
+  pointer-events: none;
+}
+header {
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1.3rem;
+  margin-top: 10px;
+}
+
+@media (max-width: 550px) {
+  .popup {
+    width: 100%;
+    padding: 10px 15px 17px;
+  }
 }
